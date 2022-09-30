@@ -1,0 +1,47 @@
+#container{
+    width: 100%;
+}
+#header{
+    display: flex;
+    position: fixed;top: 0;
+    justify-content: space-between;
+    height: 60px;
+}
+#header .header_l{
+    display: flex;
+    align-items: center;
+}
+#header .header_l >div{
+    padding-left: 20px;
+}
+#header .site_logo_img{
+    width: 56px;
+    height: 40px;
+}
+#header .header_r{
+    display: flex;
+    align-items: center;
+}
+#header .header_r button{
+    padding-right: 20px;
+}
+
+#header .header_country_button img{
+    width:20px;
+    height: 14px;
+}
+#header nav{
+    display: flex;
+    position: absolute;top: 50px;left: 78px;
+    flex-direction: column;
+    width: 350px;
+    height: 969px;
+}
+#header .site-nav-mega{
+    width: 301px;
+    padding: 0 0 30px;
+    margin: 0 20px;
+}
+#header nav a{
+    display: flex;
+}

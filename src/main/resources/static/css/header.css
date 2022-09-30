@@ -1,0 +1,81 @@
+.header-container {
+    display: flex;
+    position: fixed;top: 0;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    padding: 0px 20px;
+    z-index: 15;
+}
+.header_r{
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+}
+.header_l{
+    display: flex;
+    align-items: center;
+}
+.site_logo{
+    display: flex;
+    align-items: center;
+    width: 56px;
+    height: 60px;
+}
+.site_logo img{
+    width: 100%;
+}
+
+.nav_menu_button{
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    padding: 0px 10px;
+    
+    height: 60px;
+}
+.nav_menu_button:hover{
+    font-weight: 700;
+    text-decoration: underline;
+}
+nav{
+    position: absolute;
+    top: 0px;left: 0px;
+    width: 352px;
+    height: 100%;
+    z-index: 10;
+    padding-top: 80px;
+    background-color: white;
+}
+.nav-invisible{
+    display: none;
+}
+.site-nav-mega{
+    display: flex;
+    flex-direction: column;
+    width: 301px;
+    padding-bottom:30px;
+    margin: 0 20px;
+    padding-left: 76px;
+}
+.site-nav-child-link{
+    margin-bottom: 6px;
+}
+.site-nav-child-link:hover{
+    font-weight: 700;
+    text-decoration: underline;
+}
+.header_country_button{
+}
+.header_country_button img{
+    width:20px;
+    height: 10px;
+}
+.header_r button{
+    margin-left: 10px;
+
+}
+.header_search_button:hover{
+    opacity: 0.5;
+}
