@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Account</title>
+    <title>Account</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/header.css">
     <link rel="stylesheet" href="/static/css/account.css">
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    
 </head>
 <body>
     <div id="container">
@@ -18,7 +18,7 @@
                 <div class="header-flex">
                     <div class="header-left-container">
                         <div class="logo-container">
-                            <img class="site-logo" src="/static/images/logo/site_logo.PNG" alt="site_logo">
+                            <img class="site-logo" src="/static/imgs/header/logo.png" alt="site_logo">
                         </div>
                         <div class="menu-container">
                             <div class="site-nav-menu">
@@ -29,7 +29,7 @@
                     <div class="header-right-container">
                         <button class="site-header-button">SEARCH</button>
                         <button class="site-header-button">BAG(<span class="bac-count">1</span>)</button>
-                        <button class="site-header-button"><img class="korea-img" src="/static/images/logo/korea_img.PNG" alt="korea"></button>
+                        <button class="site-header-button"><img class="korea-img" src="/static/imgs/header/language.png" alt="korea"></button>
                     </div>
                 </div>
             </div>
@@ -64,18 +64,21 @@
                 <div class="login-container">
                     <section class="login-current">
                         <h2 class="login-subheader">신규 회원가입</h2>
-                        <div class="login-name">
-                            <div class="login-half">
+                        <div class="errors errors-invisible">
+
+                        </div>
+                        <div class="account-name">
+                            <div class="account-name-half">
                                 <input type="text" class="login-input" placeholder="이름">
                             </div>
-                            <div class="login-half">
+                            <div class="account-name-half">
                                 <input type="text" class="login-input" placeholder="성">
                             </div>
                         </div>
                         <input type="email" class="login-input" placeholder="이메일">
-                        <input type="password" class="login-input" placeholder="비밀번호">
-                        <button type="button" class="black-button login-button">확인</button>
-                        <a href="/account/login" class="login-return">로그인으로 돌아가기</a>
+                        <input type="password" class="login-input"  placeholder="비밀번호">
+                        <button type="submit" class="black-button login-button">확인</button>
+                        <a href="" class="login-return-link">로그인으로 돌아가기</a>
                     </section>
                 </div>
             </div>
@@ -83,6 +86,5 @@
         <footer>
         </footer>
     </div>
-    <script src="/static/js/register.js"></script>
 </body>
 </html>
