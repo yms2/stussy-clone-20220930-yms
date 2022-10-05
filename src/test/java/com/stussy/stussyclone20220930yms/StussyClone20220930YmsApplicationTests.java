@@ -9,5 +9,4 @@ class StussyClone20220930YmsApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
