@@ -3,6 +3,7 @@ package com.stussy.stussyclone20220930yms.api;
 import com.stussy.stussyclone20220930yms.dto.RegisterReqDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AccountApi {
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(RegisterReqDto registerReqDto){
+    public ResponseEntity<?> register(@RequestBody RegisterReqDto registerReqDto){
         System.out.println("회원가입 요청 데이터:"+ registerReqDto);
         return null;
     }
