@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestController
 @RestControllerAdvice
 public class RestControllerExceptionHandler {
+
+
     @ExceptionHandler(CustomValidationException.class)
     public ResponseEntity<?> validationErrorException(CustomValidationException e){
 

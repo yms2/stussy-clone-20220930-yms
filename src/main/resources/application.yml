@@ -10,3 +10,12 @@ spring:
     user:
       name: test@naver.com
       password: 1q2w3e4r!
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://database-1.cauab0rkacs7.ap-northeast-2.rds.amazonaws.com:3306/stussy-20220930
+    username: admin
+    password: q1w2e3r4
+
+mybatis:
+  mapper-locations:
+    - /mappers/*.xml

@@ -5,6 +5,8 @@ import com.stussy.stussyclone20220930yms.dto.CMRespDto;
 import com.stussy.stussyclone20220930yms.dto.RegisterReqDto;
 import com.stussy.stussyclone20220930yms.dto.validation.ValidationSequence;
 import com.stussy.stussyclone20220930yms.exception.CustomValidationException;
+import com.stussy.stussyclone20220930yms.service.AccountService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -21,11 +23,13 @@ import java.util.Map;
 
 @RequestMapping("/api/account")
 @RestController
+@RequiredArgsConstructor
 public class AccountApi {
-
+    private final AccountService accountService;
     @LogAspect
     @PostMapping("/register")
-    public ResponseEntity<?> register(@Validated(ValidationSequence.class) @RequestBody RegisterReqDto registerReqDto, BindingResult bindingResult){
+    public ResponseEntity<?> register(@Validated(ValidationSequence.class) @RequestBody RegisterReqDto registerReqDto, BindingResult bindingResult) throws Exception {
+        accountService.register(registerReqDto);
         return ResponseEntity.ok().body(new CMRespDto<>("회원가입 성공", registerReqDto));
     }
 }
