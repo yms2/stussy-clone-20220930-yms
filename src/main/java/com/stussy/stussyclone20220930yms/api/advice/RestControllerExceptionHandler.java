@@ -1,6 +1,7 @@
 package com.stussy.stussyclone20220930yms.api.advice;
 
 import com.stussy.stussyclone20220930yms.dto.CMRespDto;
+import com.stussy.stussyclone20220930yms.exception.CustomInternalServerErrorException;
 import com.stussy.stussyclone20220930yms.exception.CustomValidationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,5 +18,9 @@ public class RestControllerExceptionHandler {
 
         return ResponseEntity.badRequest().body(new CMRespDto<>( e.getMessage(), e.getErrorMap()));
     }
+    @ExceptionHandler(CustomInternalServerErrorException.class)
+    public ResponseEntity<?> internalServerErrorException(CustomInternalServerErrorException e) {
 
+        return ResponseEntity.internalServerError().body(new CMRespDto<>(e.getMessage(), null));
+    }
 }

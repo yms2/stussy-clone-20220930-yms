@@ -34,8 +34,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //폼로그인에 대한 설정
                 .loginPage("/account/login")
                 //페이지주소.
+                .loginProcessingUrl("/account/login")
+                //로그인 서비스 포스트요청
                 .defaultSuccessUrl("/index");
 
 
+
     }
+
+
 }

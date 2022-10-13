@@ -20,14 +20,15 @@ registerForButton.onclick =() =>{
         contentType:"application/json", //전송할 데이터가 json인 경우
         data: JSON.stringify(user),     //전송할 데이터가 있으면
         dataType:"json",               //json외 text등을 사용할 수 있지만  json사용함
-        success: (response) => {        //성공시에 실행될 메소드
-            alert("회원가입 요청 성공");
-            console.log(response)
+        success: (response, textStatus, request) => {        //성공시에 실행될 메소드
+            console.log(response);
+            const successURI = request.getResponseHeader("Location");
+            location.replace(successURI + "?email=" + response.data);
         },
         error: (error) => {             //실패시에 실행될 메소드
             console.log(error.responseJSON.data);
             loadErrorMessage(error.responseJSON.data)
-
+()
         }
     }
 
