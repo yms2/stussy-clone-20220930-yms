@@ -1,59 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
-
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 11px;
-    letter-spacing: 1px;
+  font-size: 11px;
 }
 
-body, html {
-    margin: 0px;
+body {
+  margin: 0;
+  /* background-color: beige; */
 }
 
-input, textarea, select{
-    margin-bottom: 15px;
-    border: 1px solid rgb(198, 198, 198);
-    padding: 10px;
-    
-    width: 100%;
-}
-
-input:focus, textarea:focus, select:focus {
-    outline: none;
-    border: 1px solid black;
+a {
+  text-decoration: none;
+  color: black;
 }
 
 button {
-    margin-bottom: 10px;
-    border: 1px solid black;
-    padding: 15px 0px;
-    width: 80px;
-    
-    font-weight: 700;
-    color: black;
-    background-color: white;
-    cursor: pointer;
+  border: none;
+  background: none;
+
+  cursor: pointer;
 }
 
-
-a {
-    text-decoration: none;
-    color: black;
+.btn {
+  border: 1px solid black;
+  padding: 10px;
 }
 
-a:hover {
-    font-weight: 700;
-    text-decoration: underline;
+input, textarea, select {
+  border: 1px solid rgb(198, 198, 198);
+  outline: none;
+  padding: 10px;
+
+  width: 100%;
 }
 
-ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+input:focus, textarea:focus, select:focus {
+  border: 1px solid black;
+  outline: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 main {
-    margin-top: 60px;
+  margin-top: 60px;
 }
