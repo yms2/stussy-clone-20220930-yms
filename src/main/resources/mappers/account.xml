@@ -4,8 +4,8 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="com.stussy.stussyclon20220930changeun.repository.AccountRepository">
-    <resultMap id="role" type="com.stussy.stussyclon20220930changeun.domain.Role">
+<mapper namespace="com.stussy.stussyclone20220930yms.repository.AccountRepository">
+    <resultMap id="role" type="com.stussy.stussyclone20220930yms.domain.Role">
 <!--   property는 세터를 의미한다.     -->
         <result property="id" column="id"/>
         <result property="name" column="role_name"/>
@@ -13,7 +13,7 @@
         <result property="update_date" column="update_date"/>
     </resultMap>
 
-    <resultMap id="user" type="com.stussy.stussyclon20220930changeun.domain.User">
+    <resultMap id="user" type="com.stussy.stussyclone20220930yms.domain.User">
     <result property="id" column="id"/>
     <result property="email" column="email"/>
     <result property="password" column="password"/>
@@ -45,7 +45,7 @@
             um.email = #{email}
     </select>
 
-    <insert id="saveUser" parameterType="com.stussy.stussyclon20220930changeun.domain.User">
+    <insert id="saveUser" parameterType="com.stussy.stussyclone20220930yms.domain.User">
         insert into
             user_mst
         values(
