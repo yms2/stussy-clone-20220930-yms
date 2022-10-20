@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class ProductCategory {
     private int category_id;
-    private int groups_id;
+    private int group_id;
     private String category_name;
 
     public CategoryResponseDto toDto(){
