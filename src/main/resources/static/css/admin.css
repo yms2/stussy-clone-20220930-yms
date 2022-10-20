@@ -39,6 +39,7 @@
 
   height: 250px;
   animation: visible 0.2s linear alternate;
+<<<<<<< HEAD
 }
 
 input[type="text"], input[type ="number"] {
@@ -129,3 +130,28 @@ textarea {
   height: 50px;
 
 }
+=======
+}
+
+input[type=text] {
+  height: 36px;
+}
+
+textarea {
+  height: 100%;
+  resize: none;
+  /* y축 스크롤 자동으로 추가 되는 기능 */
+  overflow-y: auto;
+}
+
+.regist-info-invisible {
+  display: none;
+}
+
+.regist-button {
+  width: 100%;
+  height: 40px;
+  color: white;
+  background-color: black;
+}
+>>>>>>> aa8145d12c9bccb4ef5b272c3df8267d5f22979c
