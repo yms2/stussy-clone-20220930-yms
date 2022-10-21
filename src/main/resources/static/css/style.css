@@ -47,7 +47,6 @@ ul {
 
 main {
   margin-top: 60px;
-<<<<<<< HEAD
 }
 table {
   border-collapse: collapse;
@@ -58,6 +57,4 @@ th, td{
   border:1px solid rgb(198, 198, 198);
   height: 30px;
   text-align: center;
-=======
->>>>>>> aa8145d12c9bccb4ef5b272c3df8267d5f22979c
 }
