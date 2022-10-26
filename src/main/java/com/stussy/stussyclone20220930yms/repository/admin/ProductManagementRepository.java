@@ -3,6 +3,7 @@ package com.stussy.stussyclone20220930yms.repository.admin;
 import com.stussy.stussyclone20220930yms.domain.OptionProductMst;
 import com.stussy.stussyclone20220930yms.domain.Product;
 import com.stussy.stussyclone20220930yms.domain.ProductCategory;
+import com.stussy.stussyclone20220930yms.dto.admin.ProductMstOptionRespDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

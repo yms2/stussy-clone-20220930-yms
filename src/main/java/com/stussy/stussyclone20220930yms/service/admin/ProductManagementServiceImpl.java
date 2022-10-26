@@ -34,12 +34,11 @@ public class ProductManagementServiceImpl implements ProductManagementService {
         }
     }
 
-    @Override
-    public List<ProductMstOptionRespDto> getProductList() throws Exception{
+    public List<ProductMstOptionRespDto> getProductMstList() throws Exception {
         List<ProductMstOptionRespDto> list = new ArrayList<ProductMstOptionRespDto>();
-        productManagementRepository.getProductMstList().forEach(pdtMst ->{
+        productManagementRepository.getProductMstList().forEach(pdtMst -> {
             list.add(pdtMst.toDto());
         });
-        return list;
+        return null;
     }
 }

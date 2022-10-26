@@ -12,6 +12,6 @@ public interface ProductManagementService {
     public List<CategoryResponseDto> getCategoryList() throws Exception;
     public void registerMst(ProductRegisterReqDto productRegisterReqDto) throws Exception;
 
-    public List<ProductMstOptionRespDto> getProductList() throws Exception;
+    public List<ProductMstOptionRespDto> getProductMstList() throws Exception;
 
 }
