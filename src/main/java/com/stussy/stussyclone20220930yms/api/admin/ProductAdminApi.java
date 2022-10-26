@@ -3,6 +3,7 @@ package com.stussy.stussyclone20220930yms.api.admin;
 import com.stussy.stussyclone20220930yms.aop.annotation.LogAspect;
 import com.stussy.stussyclone20220930yms.aop.annotation.ValidAspect;
 import com.stussy.stussyclone20220930yms.dto.CMRespDto;
+import com.stussy.stussyclone20220930yms.dto.admin.ProductRegisterDtlReqDto;
 import com.stussy.stussyclone20220930yms.dto.admin.ProductRegisterReqDto;
 import com.stussy.stussyclone20220930yms.service.admin.ProductManagementService;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ public class ProductAdminApi {
     @LogAspect
     @ValidAspect
     @PostMapping("/product")
-    public ResponseEntity<?> registerProductMst(@Validated @RequestBody ProductRegisterReqDto productRegisterReqDto,
+    public ResponseEntity<?> registerProductMst(@Valid @RequestBody ProductRegisterReqDto productRegisterReqDto,
                                                 BindingResult bindingResult) throws Exception {
             String name = productRegisterReqDto.getName();
 
@@ -52,5 +53,19 @@ public class ProductAdminApi {
         public ResponseEntity<?> getProductMstList() throws Exception {
             return ResponseEntity.ok()
                    .body(new CMRespDto<>("Get successfully",productManagementService.getProductMstList()));
+        }
+        @GetMapping("/option/products/size/{productId}")
+        public ResponseEntity<?> getSizeList(@PathVariable int productId) throws Exception {
+            return ResponseEntity.ok()
+                    .body(new CMRespDto<>("Get successfully",productManagementService.getSizeList(productId)));
+        }
+        @PostMapping("/product/dtl")
+        public ResponseEntity<?> registerDtl(@RequestBody ProductRegisterDtlReqDto productRegisterDtlReqDto) throws Exception {
+            productManagementService.checkDuplicatedColor((productRegisterDtlReqDto));
+            productManagementService.registerDtl(productRegisterDtlReqDto);
+
+
+            return ResponseEntity.created(null)
+                .body(new CMRespDto<>("Register successfully",true));
         }
     }
