@@ -1,10 +1,7 @@
 package com.stussy.stussyclone20220930yms.service.admin;
 
 
-import com.stussy.stussyclone20220930yms.dto.admin.CategoryResponseDto;
-import com.stussy.stussyclone20220930yms.dto.admin.ProductMstOptionRespDto;
-import com.stussy.stussyclone20220930yms.dto.admin.ProductRegisterDtlReqDto;
-import com.stussy.stussyclone20220930yms.dto.admin.ProductRegisterReqDto;
+import com.stussy.stussyclone20220930yms.dto.admin.*;
 
 import java.util.List;
 
@@ -20,4 +17,8 @@ public interface ProductManagementService {
     public void checkDuplicatedColor(ProductRegisterDtlReqDto productRegisterDtlReqDto) throws Exception;
 
     public void registerDtl(ProductRegisterDtlReqDto productRegisterDtlReqDto) throws Exception;
+
+    public void registerImg(ProductImgReqDto productImgReqDto) throws Exception;
+
+
 }
