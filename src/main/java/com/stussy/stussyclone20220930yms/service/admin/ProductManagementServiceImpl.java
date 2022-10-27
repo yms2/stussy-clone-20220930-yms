@@ -38,53 +38,59 @@ public class ProductManagementServiceImpl implements ProductManagementService {
         });
         return categoryResponseDtos;
     }
+
     @Override
     public void registerMst(ProductRegisterReqDto productRegisterReqDto) throws Exception{
-        if(productManagementRepository.saveProductMst(productRegisterReqDto.toEntity()) == 0){
+        if(productManagementRepository.saveProductMst(productRegisterReqDto.toEntity()) == 0) {
             throw new CustomInternalServerErrorException("상품 등록 실패");
         }
     }
 
+    @Override
     public List<ProductMstOptionRespDto> getProductMstList() throws Exception {
         List<ProductMstOptionRespDto> list = new ArrayList<ProductMstOptionRespDto>();
         productManagementRepository.getProductMstList().forEach(pdtMst -> {
             list.add(pdtMst.toDto());
         });
+
         return list;
     }
+
     @Override
     public List<?> getSizeList(int productId) throws Exception {
         List<ProductSizeOptionRespDto> list = new ArrayList<ProductSizeOptionRespDto>();
-        productManagementRepository.getSizeList(productId).forEach(size ->{
+
+        productManagementRepository.getSizeList(productId).forEach(size -> {
             list.add(size.toDto());
         });
+
         return list;
     }
 
-    public void checkDuplicatedColor(ProductRegisterDtlReqDto productRegisterDtlReqDto) throws Exception{
-
-
-        if(productManagementRepository.findProductColor(productRegisterDtlReqDto.toEntity()) > 0){
-            Map<String,String> errorMap = new HashMap<String,String>();
-            errorMap.put("error","이미 등록된 상품입니다.");
-            throw new CustomValidationException("Dublicated Error",errorMap);
-        };
-    }
     @Override
-    public void registerDtl(ProductRegisterDtlReqDto productRegisterDtlReqDto)throws Exception {
-        if(productManagementRepository.saveProductDtl(productRegisterDtlReqDto.toEntity()) == 0){
+    public void checkDuplicatedColor(ProductRegisterDtlReqDto productRegisterDtlReqDto) throws Exception {
+        if(productManagementRepository.findProductColor(productRegisterDtlReqDto.toEntity()) > 0) {
+            Map<String, String> errorMap = new HashMap<String, String>();
+            errorMap.put("error", "이미 등록된 상품입니다.");
+            throw new CustomValidationException("Duplicated Error", errorMap);
+        }
+    }
+
+    @Override
+    public void registerDtl(ProductRegisterDtlReqDto productRegisterDtlReqDto) throws Exception {
+        if(productManagementRepository.saveProductDtl(productRegisterDtlReqDto.toEntity()) == 0) {
             throw new CustomInternalServerErrorException("상품 등록 오류");
         }
     }
 
     @Override
     public void registerImg(ProductImgReqDto productImgReqDto) throws Exception {
-        log.info("pdtId >>>" + productImgReqDto.getPdtId());
+        log.info("pdtId >>> " + productImgReqDto.getPdtId());
 
-        if(productImgReqDto.getFiles() == null){
-            Map<String,String> errorMap = new HashMap<String,String>();
-            errorMap.put("error","이미지를 선택하지 않았습니다.");
-            throw new CustomValidationException("Img Error",errorMap);
+        if(productImgReqDto.getFiles() == null) {
+            Map<String, String> errorMap = new HashMap<String, String>();
+            errorMap.put("error", "이미지를 선택하지 않았습니다.");
+            throw new CustomValidationException("Img Error", errorMap);
         }
 
         List<ProductImg> productImgs = new ArrayList<ProductImg>();
@@ -92,12 +98,12 @@ public class ProductManagementServiceImpl implements ProductManagementService {
         productImgReqDto.getFiles().forEach(file -> {
             String originName = file.getOriginalFilename();
             String extension = originName.substring(originName.lastIndexOf("."));
-            String saveName = UUID.randomUUID().toString().replaceAll("-","") + extension;
+            String saveName = UUID.randomUUID().toString().replaceAll("-", "") + extension;
 
             Path path = Paths.get(filePath + "product/" + saveName);
 
-            File f = new File(filePath + " product");
-            if(!f.exists()){
+            File f = new File(filePath + "product");
+            if(!f.exists()) {
                 f.mkdirs();
             }
 
@@ -111,8 +117,7 @@ public class ProductManagementServiceImpl implements ProductManagementService {
                             .pdt_id(productImgReqDto.getPdtId())
                             .origin_name(originName)
                             .save_name(saveName)
-                        .build());
-
+                            .build());
         });
         productManagementRepository.saveProductImg(productImgs);
 
