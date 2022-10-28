@@ -16,4 +16,5 @@ public class ProductDetail {
     private  int size_id;
     private String pdt_color;
     private int pdt_stock;
+    private String size_name;
 }

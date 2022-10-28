@@ -1,6 +1,9 @@
 package com.stussy.stussyclone20220930yms.service;
 
+import com.stussy.stussyclone20220930yms.domain.Product;
 import com.stussy.stussyclone20220930yms.dto.CollectionListRespDto;
+import com.stussy.stussyclone20220930yms.dto.ProductRespDto;
+import com.stussy.stussyclone20220930yms.exception.CustomValidationException;
 import com.stussy.stussyclone20220930yms.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,6 +33,55 @@ public class ProductServiceImpl implements ProductService{
             });
 
             return productList;
+        }
+
+        @Override
+        public ProductRespDto getProduct(int pdtId) throws Exception {
+
+            Product product = productRepository.getProduct(pdtId);
+
+            if(product == null) {
+                Map<String, String> errormap = new HashMap<String,String>();
+                errormap.put("error","등록되지 않은 상품입니다.");
+                throw new CustomValidationException("Get Product Error", errormap);
+            }
+
+            Map<String, List<Map<String,Object>>> pdtColors = new HashMap<String,List<Map<String ,Object>>>();
+            List<String> pdtImgs = new ArrayList<String>();
+
+            product.getPdt_dtl().forEach(dtl ->{
+                if(pdtColors.containsKey(dtl.getPdt_color())){
+                    pdtColors.put(dtl.getPdt_color(),new ArrayList<Map<String,Object >>());
+                }
+            });
+
+            product.getPdt_dtl().forEach(dtl ->{
+                Map<String,Object > pdtDtlIdAndSize = new HashMap<String,Object>();
+                pdtDtlIdAndSize.put("pdtDtlId",dtl.getId());
+                pdtDtlIdAndSize.put("sizeId",dtl.getSize_id());
+                pdtDtlIdAndSize.put("sizeName",dtl.getSize_name());
+                pdtDtlIdAndSize.put("pdtStock",dtl.getPdt_stock());
+
+                pdtColors.get(dtl.getPdt_color()).add(pdtDtlIdAndSize);
+            });
+
+            Product.getPdt_imgs().forEach(img -> {
+                pdtImgs.add(img.getSave_name());
+            });
+
+            ProductRespDto dto = ProductRespDto.builder()
+                    .pdtId(product.getId())
+                    .pdtName(product.getPdt_name())
+                    .pdtPrice(Product.getPdt_price)
+                    .pdtSimpleInfo(product.getPdt_simple_info())
+                    .pdtDetailInfo(product.getPdt_detail_info())
+                    .pdtOptionInfo(product.getPdt_simple_info())
+                    .pdtManagementInfo(product.getPdt_management_info())
+                    .pdtShippingInfo(product.getPdt_simple_info())
+                    .pdtColors(pdtColors)
+
+            .build();
+            return dto;
         }
 
 }
