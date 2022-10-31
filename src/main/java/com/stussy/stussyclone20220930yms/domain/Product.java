@@ -22,7 +22,7 @@ public class Product {
     private String pdt_option_info;
     private String pdt_management_info;
     private String pdt_shipping_info;
-    private List<ProductDetail> pdt_dtl;
+    private List<ProductDetail> pdt_dtls;
     private List<ProductImg> pdt_imgs;
 
 

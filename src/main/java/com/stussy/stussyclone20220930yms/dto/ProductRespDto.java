@@ -12,9 +12,9 @@ import java.util.Map;
 public class ProductRespDto {
 
     private int pdtId;
-    private  String pdtName;
+    private String pdtName;
     private String pdtPrice;
-    private  String pdtSimpleInfo;
+    private String pdtSimpleInfo;
     private String pdtDetailInfo;
     private String pdtOptionInfo;
     private String pdtManagementInfo;

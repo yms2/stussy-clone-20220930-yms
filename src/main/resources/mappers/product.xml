@@ -8,7 +8,7 @@
 
     <resultMap id="getProduct" type="com.stussy.stussyclone20220930yms.domain.ProductDetail">
         <result property="id" column="pdt_dtl_id"></result>
-        <result property="pdt_color" column="pdt_dtl_id"></result>
+        <result property="pdt_color" column="pdt_color"></result>
         <result property="size_id" column="size_id"></result>
         <result property="size_name" column="size_name"></result>
         <result property="pdt_stock" column="pdt_stock"></result>
@@ -60,28 +60,28 @@
 
     <select id="getProduct" resultMap="getProductMst">
         SELECT
-            pm.id AS pdt_id,
-            pm.pdt_name,
-            pm.pdt_price,
-            pm.pdt_simple_info,
-            pm.pdt_detail_info,
-            pm.pdt_option_info,
-            pm.pdt_management_info,
-            pm.pdt_shipping_info,
-            pd.id AS pdt_dtl_id,
-            pd.size_id,
-            psm.size_name,
-            pd.pdt_color,
-            pd.pdt_stock,
-            pim.save_name
+        pm.id AS pdt_id,
+        pm.pdt_name,
+        pm.pdt_price,
+        pm.pdt_simple_info,
+        pm.pdt_detail_info,
+        pm.pdt_option_info,
+        pm.pdt_management_info,
+        pm.pdt_shipping_info,
+        pd.id AS pdt_dtl_id,
+        pd.size_id,
+        psm.size_name,
+        pd.pdt_color,
+        pd.pdt_stock,
+        pim.save_name
         FROM
-            pdt_mst pm
-            LEFT OUTER JOIN pdt_dtl pd ON(pd.pdt_id = pm.id)
-            LEFT OUTER JOIN pdt_size_dtl psd ON(psd.id = pd.size_id)
-            LEFT OUTER JOIN pdt_size_mst psm ON(psm.id = psd.size_id)
-            LEFT OUTER JOIN pdt_image_mst pim ON(pim.pdt_id = pm.id)
+        pdt_mst pm
+        LEFT OUTER JOIN pdt_dtl pd ON(pd.pdt_id = pm.id)
+        LEFT OUTER JOIN pdt_size_dtl psd ON(psd.id = pd.size_id)
+        LEFT OUTER JOIN pdt_size_mst psm ON(psm.id = psd.size_id)
+        LEFT OUTER JOIN pdt_image_mst pim ON(pim.pdt_id = pm.id)
         WHERE
-            pm.id = #{pdtId}
+        pm.id = #{pdtId}
     </select>
 
 </mapper>

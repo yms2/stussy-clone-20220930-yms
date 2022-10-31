@@ -10,7 +10,6 @@ public interface ProductService {
 
     public List<CollectionListRespDto> getProductList(String category, int page)throws Exception;
 
-    public Object getProduct(int pdtId) throws Exception;
+    public ProductRespDto getProduct(int pdtId) throws Exception;
 
-    public ProductRespDto getProduct
 }
