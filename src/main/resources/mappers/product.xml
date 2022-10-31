@@ -6,7 +6,7 @@
 
 <mapper namespace="com.stussy.stussyclone20220930yms.repository.ProductRepository">
 
-    <resultMap id="getProduct" type="com.stussy.stussyclone20220930yms.domain.ProductDetail">
+    <resultMap id="getProductDtl" type="com.stussy.stussyclone20220930yms.domain.ProductDetail">
         <result property="id" column="pdt_dtl_id"></result>
         <result property="pdt_color" column="pdt_color"></result>
         <result property="size_id" column="size_id"></result>

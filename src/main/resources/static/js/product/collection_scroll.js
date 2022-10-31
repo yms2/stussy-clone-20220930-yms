@@ -35,9 +35,14 @@ class CollectionsApi {
     }
 }
 
-class pageScroll {
-    constructor() {
-        this.addScrollPagingEvent();
+class PageScroll {
+    static #instance = null;
+
+    static getInstance() {
+        if(this.#instance == null) {
+            this.#instance = new PageScroll();
+        }
+        return this.#instance;
     }
      
     addScrollPagingEvent() {
@@ -45,9 +50,6 @@ class pageScroll {
         const body = document.querySelector("body");
 
         body.onscroll = () => {
-            // console.log("문서 전체 높이: " + body.offsetHeight);
-            // console.log("눈에 보이는 영역 높이: " + html.clientHeight);
-            // console.log("스크롤의 상단 위치: " + html.scrollTop);
             let scrollStatus = body.offsetHeight - html.clientHeight - html.scrollTop;
             console.log("현재 스크롤 상태: " + scrollStatus);
             if(scrollStatus > -50 && scrollStatus < 50) {
@@ -71,14 +73,17 @@ class CollectionsService {
         return this.#instance;
     }
 
-    constructor() {
-        new pageScroll();
-    }
+    pdtIdList = null;
 
+    
     collectionsEntity = {
         page: 1,
         totalCount: 0,
         maxPage: 0
+    }
+    
+    constructor() {
+        this.pdtIdList = new Array();
     }
 
     loadCollections() {
@@ -102,6 +107,7 @@ class CollectionsService {
         const collectionProducts = document.querySelector(".collection-products");
 
         responseData.forEach(product => {
+            this.pdtIdList.push(product.productId);
             collectionProducts.innerHTML += `
             <li class="collection-product">
                 <div class="product-img">
@@ -116,11 +122,22 @@ class CollectionsService {
             </li>
             `;
         });
+        this.addProductListEvent();
+    }
+
+    addProductListEvent(){
+        const collectionProducts = document.querySelectorAll(".collection-product");
+
+        collectionProducts.forEach((product, index)=>{
+            product.onclick = () =>{
+                location.href = "/product/" + this.pdtIdList[index];
+            }
+        })
     }
 
 }
 
 window.onload = () => {
     CollectionsService.getInstance().loadCollections();
-    
+    PageScroll.getInstance().addScrollPagingEvent();
 }
