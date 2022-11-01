@@ -30,8 +30,8 @@ public class ProductController {
         @GetMapping("/checkout")
         public String loadPayment(Model model,
                                   @RequestParam int pdtDtlId,
-                                  @AuthenticationPrincipal PrincipalDetails principalDetails) throws Exception{
-            CheckoutRespDto checkoutRespDto = ProductService.getCheckoutProduct(pdtDtlId);
+                                  @AuthenticationPrincipal PrincipalDetails principalDetails) throws Exception {
+            CheckoutRespDto checkoutRespDto = productService.getCheckoutProduct(pdtDtlId);
             model.addAttribute("data",checkoutRespDto);
             model.addAttribute("user",principalDetails.getUser());
             return "product/product_order";

@@ -1,10 +1,8 @@
 package com.stussy.stussyclone20220930yms.dto;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Builder
 @Data
