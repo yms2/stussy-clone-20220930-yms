@@ -20,7 +20,7 @@ class ProductMst{
   }
 
   getcategory() {return this.#category;}
-  setcategory(category) {this.#category =category ;}
+  setcategory(category) {this.#category = category ;}
 
   getname() {return this.#name;}
   setname(name) {this.#name = name ;}

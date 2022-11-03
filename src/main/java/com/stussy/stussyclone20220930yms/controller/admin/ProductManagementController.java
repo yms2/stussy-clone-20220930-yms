@@ -17,5 +17,3 @@ public class ProductManagementController {
         return "admin/product_dtl_registration";
     }
 }
-
-
